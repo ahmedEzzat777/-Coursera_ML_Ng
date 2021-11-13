@@ -84,11 +84,11 @@ for i = 1:m
   
   %%gradients
   delta3 = a3 -yi;
-  a2 = [1; a2];
-  delta2 = (Theta2'*delta3).*sigmoidGradient(a2);
+  delta2 = (Theta2'*delta3).*sigmoidGradient([1; z2]);
   delta2 = delta2(2:end);
   
   a1 = [1; Xi'];
+  a2 = [1; a2];
   Delta1 = Delta1 + delta2 * a1';
   Delta2 = Delta2 + delta3 * a2';
 end
