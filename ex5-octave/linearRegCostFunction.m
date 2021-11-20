@@ -20,13 +20,18 @@ grad = zeros(size(theta));
 %
 
 
+h = X * theta;
+error = (h - y)
+sumSqErr = error' * error;
 
+Jnoreg  = sumSqErr/(2*m);
+unbiasedTheta = [0; theta(2:end)];
+Jreg = (unbiasedTheta'*unbiasedTheta)*(lambda / (2*m));
+J = Jnoreg + Jreg;
 
-
-
-
-
-
+gradNoReg = (X' * error)/m; %m*n - m*1
+gradReg = unbiasedTheta*(lambda/m);
+grad = gradNoReg +  gradReg;
 
 
 
